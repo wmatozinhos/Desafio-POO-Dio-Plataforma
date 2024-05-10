@@ -1,9 +1,7 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,6 +55,14 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
+
+        System.out.println("---- Certificados ----");
+
+        for (Conteudo conteudo : devJoao.getConteudosConcluidos())
+            if(conteudo instanceof Curso) ((Curso)conteudo).finalizar(devJoao);
+
+        devJoao.getCertificados().forEach(System.out::println);
+
 
     }
 

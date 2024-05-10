@@ -7,6 +7,8 @@ public class Dev {
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
+    private Set<Certificado> certificados = new LinkedHashSet<>();
+
     public void inscreverBootcamp(Bootcamp bootcamp){
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
@@ -36,7 +38,6 @@ public class Dev {
                 .mapToDouble(Conteudo::calcularXp)
                 .sum();*/
     }
-
 
     public String getNome() {
         return nome;
@@ -73,5 +74,13 @@ public class Dev {
     @Override
     public int hashCode() {
         return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
+    }
+
+    public Set<Certificado> getCertificados() {
+        return certificados;
+    }
+
+    public void setCertificados(Set<Certificado> certificados) {
+        this.certificados = certificados;
     }
 }
