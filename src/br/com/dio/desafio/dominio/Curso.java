@@ -1,15 +1,25 @@
 package br.com.dio.desafio.dominio;
 
+import java.time.LocalDate;
+
 public class Curso extends Conteudo{
 
     private int cargaHoraria;
+
+    private Certificado certificado;
 
     @Override
     public double calcularXp() {
         return XP_PADRAO * cargaHoraria;
     }
 
+    public void finalizar(Dev dev) {
+        dev.getCertificados().add(certificado);
+        certificado.getDevs().add(dev);
+    }
+
     public Curso() {
+        certificado = new Certificado(this, LocalDate.now());
     }
 
 
