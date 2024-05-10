@@ -11,9 +11,7 @@ public class Mentoria extends Conteudo{
         return XP_PADRAO + 20d;
     }
 
-    public Mentoria() {
-    }
-
+    
     public LocalDate getData() {
         return data;
     }

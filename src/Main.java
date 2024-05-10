@@ -58,6 +58,43 @@ public class Main {
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
 
+                // Criando um segundo bootcamp
+        Bootcamp bootcamp2 = new Bootcamp();
+        bootcamp2.setNome("Bootcamp Web Developer");
+        bootcamp2.setDescricao("Descrição Bootcamp Web Developer");
+        // Adicionando conteúdos ao bootcamp2
+        Curso curso3 = new Curso();
+        curso3.setTitulo("curso HTML");
+        curso3.setDescricao("descrição curso HTML");
+        curso3.setCargaHoraria(6);
+
+        bootcamp2.getConteudos().add(curso3);
+        bootcamp2.getConteudos().add(mentoria);  // Reutilizando a mentoria existente
+
+        // Inscrevendo um desenvolvedor em ambos os bootcamps
+        Dev devMaria = new Dev();
+        devMaria.setNome("Maria");
+        devMaria.inscreverBootcamp(bootcamp);
+        devMaria.inscreverBootcamp(bootcamp2);
+
+        // Verificando os conteúdos inscritos para cada bootcamp
+        System.out.println("Conteúdos Inscritos Maria (Bootcamp Java Developer): " + devMaria.getConteudosInscritos());
+        System.out.println("Conteúdos Inscritos Maria (Bootcamp Web Developer): " + devMaria.getConteudosInscritos());
+
+    
+        devMaria.progredir();  
+        devMaria.progredir();  
+        devMaria.progredir();  
+        devMaria.progredir();  
+
+        // Verificando conteúdos concluídos e XP após tentar progredir além do último conteúdo
+        System.out.println("Conteúdos Concluídos Maria (Bootcamp Java Developer): " + devMaria.getConteudosConcluidos());
+        System.out.println("XP Maria (Bootcamp Java Developer): " + devMaria.calcularTotalXp());
+
+        System.out.println("XP Maria (Bootcamp Java Developer): " + devMaria.calcularTotalXp());
+
+
+
     }
 
 }
