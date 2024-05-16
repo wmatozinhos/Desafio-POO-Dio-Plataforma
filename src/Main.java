@@ -1,7 +1,10 @@
 import br.com.dio.desafio.dominio.Bootcamp;
+import br.com.dio.desafio.dominio.Certificado;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.Professor;
+import br.com.dio.desafio.dominio.Projeto;
 
 import java.time.LocalDate;
 
@@ -22,10 +25,6 @@ public class Main {
         mentoria.setDescricao("descrição mentoria java");
         mentoria.setData(LocalDate.now());
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
-
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java Developer");
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
@@ -44,20 +43,41 @@ public class Main {
         System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
         System.out.println("XP:" + devCamila.calcularTotalXp());
 
-        System.out.println("-------");
+        System.out.println("");
+        Certificado certificadoJava = new Certificado();
+        certificadoJava.gerarCertificado("OOP Java", devCamila.getNome(), "2015-11-06", "GSJKCS");
+        certificadoJava.exebirCertficados();
 
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+        System.out.println("");
+        Professor sauloDaMata = new Professor("Saulo da Mata", "Devolper Java Senior");
+        sauloDaMata.adicionarCurso(curso1);
+        sauloDaMata.adicionarCurso(curso2);
+        sauloDaMata.exibirCursosPalestrados();
+        sauloDaMata.removerCurso(curso2);
+        sauloDaMata.exibirCursosPalestrados();
 
+        System.out.println("");
+        sauloDaMata.adicionarMentoria(mentoria);
+        sauloDaMata.exibirMentoriasPalestradas();
+        sauloDaMata.removerMentoria(mentoria);
+        sauloDaMata.exibirMentoriasPalestradas();
+
+        System.out.println("");
+        Projeto oppProject = new Projeto();
+        oppProject.adicionarProjeto("POO Conta Banco Java", "Criando um Banco digital usando os conceitos de POO");
+        oppProject.adicionarTec("Java");
+        oppProject.adicionarTec("AWS");
+        oppProject.adicionarTec("SpringBoot");
+
+        oppProject.adicionarMembros(devCamila);
+        oppProject.adicionarMembros(devCamila);
+        oppProject.adicionarMembros(devCamila);
+        System.out.println("Quantidade de Membros: "+oppProject.obterNumeroMembros());
+        oppProject.obterTecnologiasUtilizadas();
+        oppProject.removeTec("Java");
+        oppProject.obterTecnologiasUtilizadas();
+        oppProject.removerMembros(devCamila);
+        System.out.println("Quantidade de Membros: "+oppProject.obterNumeroMembros());
     }
 
 }
