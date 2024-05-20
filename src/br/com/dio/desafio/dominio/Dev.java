@@ -1,5 +1,7 @@
 package br.com.dio.desafio.dominio;
 
+import br.com.dio.desafio.exceptions.EmptyCollectionException;
+
 import java.util.*;
 
 public class Dev {
@@ -12,29 +14,21 @@ public class Dev {
         bootcamp.getDevsInscritos().add(this);
     }
 
-    public void progredir() {
+    public void progredir() throws EmptyCollectionException {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
         if(conteudo.isPresent()) {
             this.conteudosConcluidos.add(conteudo.get());
             this.conteudosInscritos.remove(conteudo.get());
         } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!");
+          throw new EmptyCollectionException("this set of conteudos is empty");
         }
     }
 
     public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while(iterator.hasNext()){
-            double next = iterator.next().calcularXp();
-            soma += next;
-        }
-        return soma;
-
-        /*return this.conteudosConcluidos
+        return this.conteudosConcluidos
                 .stream()
                 .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+                .sum();
     }
 
 
@@ -51,7 +45,7 @@ public class Dev {
     }
 
     public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
-        this.conteudosInscritos = conteudosInscritos;
+        this.conteudosInscritos.addAll(conteudosInscritos);
     }
 
     public Set<Conteudo> getConteudosConcluidos() {
@@ -59,7 +53,7 @@ public class Dev {
     }
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
-        this.conteudosConcluidos = conteudosConcluidos;
+        this.conteudosConcluidos.addAll(conteudosConcluidos);
     }
 
     @Override

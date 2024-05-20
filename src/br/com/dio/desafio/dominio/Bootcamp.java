@@ -44,7 +44,7 @@ public class Bootcamp {
     }
 
     public void setDevsInscritos(Set<Dev> devsInscritos) {
-        this.devsInscritos = devsInscritos;
+        this.devsInscritos.addAll(devsInscritos);
     }
 
     public Set<Conteudo> getConteudos() {
@@ -52,7 +52,7 @@ public class Bootcamp {
     }
 
     public void setConteudos(Set<Conteudo> conteudos) {
-        this.conteudos = conteudos;
+        this.conteudos.addAll(conteudos);
     }
 
     @Override

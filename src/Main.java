@@ -1,63 +1,77 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
+import br.com.dio.desafio.exceptions.EmptyCollectionException;
 
 import java.time.LocalDate;
+import java.util.*;
 
 public class Main {
+    static Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
+        Bootcamp javaBootcamp = new Bootcamp();
+        javaBootcamp.setNome("Bootcamp Java Developer");
+        javaBootcamp.setDescricao("Descrição Bootcamp Java Developer");
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
+        try {
+            for(int c = 1; c <= 5; c++) {
+                System.out.println("qual tipo de conteudo quer adicionar ? \n curso = 1 | mentoria = 2");
+                int conteudoType = scanner.nextInt();
+                scanner.nextLine();
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
+                if(conteudoType == 1) {
+                    Curso curso1 = new Curso();
+                    setConteudoInfo("curso", curso1);
+                    curso1.setCargaHoraria(8);
+                    javaBootcamp.getConteudos().add(curso1);
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
+                } else if(conteudoType == 2) {
+                    Mentoria mentoria = new Mentoria();
+                    setConteudoInfo("mentoria", mentoria);
+                    mentoria.setData(LocalDate.now().plusDays(20));
+                    javaBootcamp.getConteudos().add(mentoria);
 
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+                }else {
+                    throw new RuntimeException("this conteudo does not exist in the options");
+                }
+            }
 
-        Dev devCamila = new Dev();
-        devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        devCamila.progredir();
-        devCamila.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+            Set<Dev> devSet = new HashSet<>();
+            for(int d = 1; d <= 5; d++) {
+                System.out.println("nome do dev n°"+ d);
+                String nomeDev = scanner.next();
 
-        System.out.println("-------");
+                Dev dev = new Dev();
+                dev.setNome(nomeDev);
+                dev.inscreverBootcamp(javaBootcamp);
 
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+                devSet.add(dev);
+            }
+            javaBootcamp.setDevsInscritos(devSet);
+
+            for(Dev dev : devSet) {
+                System.out.println("Conteúdos Inscritos por: " + dev.getNome() + "\n" + dev.getConteudosInscritos());
+                dev.progredir();
+                System.out.println("-");
+                System.out.println("Conteúdos Inscritos por: " + dev.getNome() + "\n" + dev.getConteudosInscritos());
+                System.out.println("Conteúdos Concluídos por: " + dev.getNome() + "\n" + dev.getConteudosConcluidos());
+                System.out.println("XP: " + dev.calcularTotalXp());
+                System.out.println("-------");
+            }
+        }catch (EmptyCollectionException e) {
+            e.getMessage();
+            e.printStackTrace();
+        }
 
     }
 
+    public static void setConteudoInfo(String conteudoType ,Conteudo conteudo) {
+        System.out.println("titulo do " + conteudoType);
+        String titulo = scanner.nextLine();
+
+        System.out.println("descrição do " + conteudoType);
+        String cursoDescription = scanner.nextLine();
+
+        conteudo.setTitulo(titulo);
+        conteudo.setDescricao(cursoDescription);
+    }
 }
