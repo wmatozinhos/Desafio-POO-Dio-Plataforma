@@ -8,6 +8,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
     public static void main(String[] args) {
+        System.out.println("began program");
         Bootcamp javaBootcamp = new Bootcamp();
         javaBootcamp.setNome("Bootcamp Java Developer");
         javaBootcamp.setDescricao("Descrição Bootcamp Java Developer");
