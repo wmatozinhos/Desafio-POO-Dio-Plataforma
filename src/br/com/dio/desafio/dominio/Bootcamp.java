@@ -57,7 +57,7 @@ public class Bootcamp {
 
     public void listarDevsInscritos() {
         System.out.println("Desenvolvedores Inscritos:");
-        for (Dev dev : devsInscritos){
+        for (Dev dev : this.devsInscritos){
             System.out.println(dev.getNome());
         }
     }

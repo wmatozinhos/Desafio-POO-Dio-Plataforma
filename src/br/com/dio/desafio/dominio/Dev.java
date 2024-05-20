@@ -1,6 +1,7 @@
 package br.com.dio.desafio.dominio;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Dev {
     private String nome;
@@ -8,10 +9,7 @@ public class Dev {
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public void cancelarMatricula(Bootcamp bootcamp){
-//        this.conteudosInscritos.removeAll(bootcamp.getConteudos());
-//        this.conteudosConcluidos.removeAll(bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().remove(this);
-        System.out.println("Matricula cancelada do bootcamp: " + bootcamp.getNome());
+        bootcamp.getDevsInscritos().removeIf(dev -> dev.equals(this));
     }
 
     public void inscreverBootcamp(Bootcamp bootcamp){
