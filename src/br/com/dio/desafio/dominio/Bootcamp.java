@@ -55,6 +55,13 @@ public class Bootcamp {
         this.conteudos = conteudos;
     }
 
+    public void listarDevsInscritos() {
+        System.out.println("Desenvolvedores Inscritos:");
+        for (Dev dev : devsInscritos){
+            System.out.println(dev.getNome());
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

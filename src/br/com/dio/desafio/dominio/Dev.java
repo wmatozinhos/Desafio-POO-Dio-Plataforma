@@ -7,10 +7,19 @@ public class Dev {
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
+    public void cancelarMatricula(Bootcamp bootcamp){
+//        this.conteudosInscritos.removeAll(bootcamp.getConteudos());
+//        this.conteudosConcluidos.removeAll(bootcamp.getConteudos());
+        bootcamp.getDevsInscritos().remove(this);
+        System.out.println("Matricula cancelada do bootcamp: " + bootcamp.getNome());
+    }
+
     public void inscreverBootcamp(Bootcamp bootcamp){
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
     }
+
+
 
     public void progredir() {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
