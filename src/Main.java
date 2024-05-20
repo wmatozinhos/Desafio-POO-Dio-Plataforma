@@ -60,7 +60,6 @@ public class Main {
 
         bootcamp.listarDevsInscritos();
         devJoao.cancelarMatricula(bootcamp);
-
         bootcamp.listarDevsInscritos();
 
     }
