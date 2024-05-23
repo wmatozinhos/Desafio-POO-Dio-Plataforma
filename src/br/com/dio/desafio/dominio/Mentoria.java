@@ -11,10 +11,15 @@ public class Mentoria extends Conteudo{
         return XP_PADRAO + 20d;
     }
 
-    public Mentoria() {
-    }
+    //construtor na classe filho
 
-    public LocalDate getData() {
+	public Mentoria(String titulo, String descricao, LocalDate data) {
+		super(titulo, descricao);
+		this.data = data;
+	}
+
+
+	public LocalDate getData() {
         return data;
     }
 
@@ -24,10 +29,8 @@ public class Mentoria extends Conteudo{
 
     @Override
     public String toString() {
-        return "Mentoria{" +
-                "titulo='" + getTitulo() + '\'' +
-                ", descricao='" + getDescricao() + '\'' +
-                ", data=" + data +
-                '}';
+        return "Mentoria" +
+                "titulo: " + getTitulo() + 
+                ", descricao: " + getDescricao() ;
     }
 }
