@@ -8,8 +8,16 @@ public abstract class Conteudo {
     private String descricao;
 
     public abstract double calcularXp();
+    
+    //construtor na classe pai
+    public Conteudo(String titulo, String descricao) {
+		super();
+		this.titulo = titulo;
+		this.descricao = descricao;
+	}
 
-    public String getTitulo() {
+
+	public String getTitulo() {
         return titulo;
     }
 
@@ -24,4 +32,14 @@ public abstract class Conteudo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+	@Override
+	public String toString() {
+		return "Conteudo [titulo=" + titulo + "]";
+	}
+
+	
+    
+	
+    
 }
