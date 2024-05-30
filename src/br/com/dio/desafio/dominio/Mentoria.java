@@ -6,6 +6,11 @@ public class Mentoria extends Conteudo{
 
     private LocalDate data;
 
+     /* Construtor que inicializa todos os campos, incluindo os herdados de Conteudo */
+     public Mentoria(String titulo, String descricao) {
+        super();
+     }
+
     @Override
     public double calcularXp() {
         return XP_PADRAO + 20d;
