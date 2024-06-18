@@ -1,42 +1,40 @@
 package br.com.dio.desafio.dominio;
 
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 public class Dev {
     private String nome;
-    private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
-    private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+    private Set<Conteudo> conteudoInscritos = new LinkedHashSet<>();
+    private Set<Conteudo> conteudoConcluidos = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp){
-        this.conteudosInscritos.addAll(bootcamp.getConteudos());
+        this.conteudoInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
-    }
 
-    public void progredir() {
-        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-        if(conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
-        } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!");
+    }
+    public void progredir(){
+        Optional<Conteudo> conteudo = conteudoInscritos.stream().findFirst();
+
+        if(conteudo.isPresent()){
+            this.conteudoConcluidos.add(conteudo.get());
+            this.conteudoInscritos.remove(conteudo.get());
         }
-    }
-
-    public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while(iterator.hasNext()){
-            double next = iterator.next().calcularXp();
-            soma += next;
+        else{
+            System.out.println("Voce não esta inscrito em nenhum conteudo");
         }
-        return soma;
 
-        /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+
     }
 
+    public Double calcularTotalXp(){
+        //reference metod
+        return conteudoConcluidos.stream().mapToDouble(Conteudo::calcularXp)
+                .sum();
+
+    }
 
     public String getNome() {
         return nome;
@@ -46,32 +44,40 @@ public class Dev {
         this.nome = nome;
     }
 
-    public Set<Conteudo> getConteudosInscritos() {
-        return conteudosInscritos;
+    public Set<Conteudo> getConteudoInscritos() {
+        return conteudoInscritos;
     }
 
-    public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
-        this.conteudosInscritos = conteudosInscritos;
+    public void setConteudoInscritos(Set<Conteudo> conteudoInscritos) {
+        this.conteudoInscritos = conteudoInscritos;
     }
 
-    public Set<Conteudo> getConteudosConcluidos() {
-        return conteudosConcluidos;
+    public Set<Conteudo> getConteudoConcluidos() {
+        return conteudoConcluidos;
     }
 
-    public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
-        this.conteudosConcluidos = conteudosConcluidos;
+    public void setConteudoConcluidos(Set<Conteudo> conteudoConcluidos) {
+        this.conteudoConcluidos = conteudoConcluidos;
+    }
+
+    @Override
+    public String toString() {
+        return "Dev{" +
+                "nome='" + nome + '\'' +
+                ", conteudoInscritos=" + conteudoInscritos +
+                ", conteudoConcluidos=" + conteudoConcluidos +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Dev dev = (Dev) o;
-        return Objects.equals(nome, dev.nome) && Objects.equals(conteudosInscritos, dev.conteudosInscritos) && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
+        if (!(o instanceof Dev dev)) return false;
+        return Objects.equals(getNome(), dev.getNome()) && Objects.equals(getConteudoInscritos(), dev.getConteudoInscritos()) && Objects.equals(getConteudoConcluidos(), dev.getConteudoConcluidos());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
+        return Objects.hash(getNome(), getConteudoInscritos(), getConteudoConcluidos());
     }
 }
