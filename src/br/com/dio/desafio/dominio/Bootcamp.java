@@ -1,16 +1,21 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 public class Bootcamp {
     private String nome;
     private String descricao;
     private final LocalDate dataInicial = LocalDate.now();
     private final LocalDate dataFinal = dataInicial.plusDays(45);
+    private  long tempoRestante = ChronoUnit.DAYS.between(dataInicial,dataFinal);
+
+    public long getTempoRestante() {
+        return tempoRestante;
+    }
+
     private Set<Dev> devsInscritos = new HashSet<>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
 
@@ -38,6 +43,12 @@ public class Bootcamp {
     public LocalDate getDataFinal() {
         return dataFinal;
     }
+//
+//    public void getTempoFaltante(){
+//        Period periodo = Period.between(dataFinal,dataInicial);
+//        int dias = periodo.getDays();
+//    }
+
 
     public Set<Dev> getDevsInscritos() {
         return devsInscritos;
