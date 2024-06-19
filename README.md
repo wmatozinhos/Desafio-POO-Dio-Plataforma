@@ -134,6 +134,53 @@ Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de p
 🔹 2.2 Paradigma Lógico: Prolog<br>
 </p>
 
+# ✨ SOLID: Um Guia Completo para Desenvolvimento de Software de Qualidade
+
+O SOLID é um conjunto de cinco princípios que ajudam a garantir que o código seja bem estruturado, fácil de manter e estender. Esses princípios são fundamentais para a programação orientada a objetos e são aplicáveis a qualquer linguagem de programação.
+
+## 🔸 Single Responsibility Principle (SRP) - Responsabilidade Única
+
+O Single Responsibility Principle (SRP) é o primeiro princípio do SOLID. Ele afirma que uma classe, método ou função deve ter apenas uma responsabilidade, ou seja, realizar apenas uma ação no software. Isso significa que uma classe não deve ter mais de uma razão para ser modificada, evitando assim a complexidade e a manutenção difícil.
+
+### 🔹 Exemplo
+Suponha que você esteja criando uma classe `NotaFiscal` que é responsável por emitir uma nota fiscal. Se a classe também for responsável por imprimir a nota fiscal, isso pode causar problemas futuros se a impressora for alterada. Em vez disso, você pode criar uma classe `NotaFiscal` e uma classe `NotaFiscalPrinter` para manter a responsabilidade única.
+
+## 🔸 Open/Closed Principle (OCP) - Aberto/Fechado
+
+O Open/Closed Principle (OCP) é o segundo princípio do SOLID. Ele afirma que as classes devem ser abertas para extensão, mas fechadas para modificação. Isso significa que você pode adicionar novas funcionalidades sem alterar o código existente.
+
+### 🔹 Exemplo
+Imagine que você está criando uma aplicação que precisa lidar com diferentes tipos de pagamentos. Em vez de alterar a classe `PaymentProcessor` para lidar com cada tipo de pagamento, você pode criar classes específicas para cada tipo de pagamento e estender a classe `PaymentProcessor` para lidar com essas classes.
+
+## 🔸 Liskov Substitution Principle (LSP) - Substituição de Liskov
+
+O Liskov Substitution Principle (LSP) é o terceiro princípio do SOLID. Ele afirma que subclasses devem ser substituíveis por suas superclasses. Isso significa que você pode usar uma classe filha em lugar da classe pai sem que isso afete o funcionamento do software.
+
+### 🔹 Exemplo
+Suponha que você esteja criando uma classe `Vehicle` que tem uma subclasse `Car`. Se a classe `Car` for substituível pela classe `Vehicle`, você pode usar a classe `Car` em lugar da classe `Vehicle` sem problemas.
+
+## 🔸 Interface Segregation Principle (ISP) - Segregação de Interface
+
+O Interface Segregation Principle (ISP) é o quarto princípio do SOLID. Ele afirma que interfaces devem ser desenhadas para que as classes que as implementem sejam independentes e não tenham dependências indiretas.
+
+### 🔹 Exemplo
+Imagine que você está criando uma aplicação que precisa lidar com diferentes tipos de dispositivos. Em vez de criar uma interface `Device` que tenha todos os métodos necessários para cada dispositivo, você pode criar interfaces específicas para cada tipo de dispositivo e ter classes que implementem essas interfaces.
+
+## 🔸 Dependency Inversion Principle (DIP) - Inversão de Dependências
+
+O Dependency Inversion Principle (DIP) é o quinto e último princípio do SOLID. Ele afirma que as classes devem ser projetadas para que suas dependências sejam inversas, ou seja, as classes devem ser projetadas para que as dependências sejam fornecidas por outras classes.
+
+### 🔹 Exemplo
+Suponha que você esteja criando uma classe `PaymentProcessor` que depende de uma classe `PaymentGateway`. Em vez de a classe `PaymentProcessor` criar uma instância da classe `PaymentGateway`, você pode criar uma interface `PaymentGateway` e ter a classe `PaymentProcessor` depender dessa interface. Isso permite que você altere a implementação da classe `PaymentGateway` sem afetar a classe `PaymentProcessor`.
+
+## 🔸 Referências
+
+- 🔺 [dev.to](https://dev.to/kauegatto/solid-um-guia-diferente-162m)
+- 🔺 [Campus Code](https://www.campuscode.com.br/conteudos/s-o-l-i-d-principio-da-responsabilidade-unica)
+- 🔺 [Hashnode](https://thepragmaticengineer.hashnode.dev/solid-entendendo-openclosed-principle-ocp-e-aplicando-no-frontend)
+- 🔺 [LinkedIn](https://pt.linkedin.com/pulse/solid-escrevendo-c%C3%B3digo-limpo-henrique-balmant)
+- 🔺 [GitHub](https://github.com/marceloalves95/SOLID-Kotlin)
+
 <h2> 🤝 Contribuindo </h2>
 
 <p>
