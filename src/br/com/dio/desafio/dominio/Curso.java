@@ -4,6 +4,16 @@ public class Curso extends Conteudo{
 
     private int cargaHoraria;
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    private Professor professor;
+
     @Override
     public double calcularXp() {
         return XP_PADRAO * cargaHoraria;
@@ -27,6 +37,7 @@ public class Curso extends Conteudo{
                 "titulo='" + getTitulo() + '\'' +
                 ", descricao='" + getDescricao() + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
+                ", Professor: " + this.professor.toString() +
                 '}';
     }
 }
