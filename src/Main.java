@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
+
         Curso curso1 = new Curso();
         curso1.setTitulo("curso java");
         curso1.setDescricao("descrição curso java");
@@ -16,6 +17,11 @@ public class Main {
         curso2.setTitulo("curso js");
         curso2.setDescricao("descrição curso js");
         curso2.setCargaHoraria(4);
+
+        Curso curso3 = new Curso(); // novo curso
+        curso3.setTitulo("curso python");
+        curso3.setDescricao("descrição curso python");
+        curso3.setCargaHoraria(6);
 
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("mentoria de java");
@@ -31,6 +37,7 @@ public class Main {
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(curso3);
         bootcamp.getConteudos().add(mentoria);
 
         Dev devCamila = new Dev();
