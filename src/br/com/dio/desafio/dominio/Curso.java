@@ -10,6 +10,7 @@ public class Curso extends Conteudo{
     }
 
     public Curso() {
+        super();
     }
 
 
