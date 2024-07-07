@@ -43,8 +43,7 @@ public class Main {
         System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
         System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
         System.out.println("XP:" + devCamila.calcularTotalXp());
-
-        System.out.println("-------");
+        System.out.println("-");
 
         Dev devJoao = new Dev();
         devJoao.setNome("Joao");
@@ -57,7 +56,27 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
+        System.out.println("-");
 
+        System.out.println("Curso: " + curso1.getTitulo());
+        System.out.println("Carga horária: " + curso1.getCargaHoraria() + " horas");
+        System.out.println("XP ganho com o curso: " + curso1.calcularXP());
+        System.out.println("-");
+
+        System.out.println("Curso: " + curso2.getTitulo());
+        System.out.println("Carga horária: " + curso2.getCargaHoraria() + " horas");
+        System.out.println("XP ganho com o curso: " + curso2.calcularXP());
+        System.out.println("-");
+
+        System.out.println(mentoria.getTitulo());
+        System.out.println("Data de início da mentoria: " + mentoria.getData());
+        System.out.println("XP ganho com a mentoria: " + mentoria.calcularXP());
+        System.out.println("-");
+
+        System.out.println(bootcamp.getNome());
+        System.out.println("Início do bootcamp: " + bootcamp.getDataInicial());
+        System.out.println("Prazo final para conclusão do bootcamp: " + bootcamp.getDataFinal());
+        System.out.println("Devs inscritos: " + devJoao.getNome() + " e " + devCamila.getNome());
+        System.out.println("Cursos oferecidos: " + bootcamp.getConteudos());
     }
-
 }
