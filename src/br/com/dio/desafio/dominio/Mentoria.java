@@ -1,6 +1,8 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Mentoria extends Conteudo{
 
@@ -22,12 +24,16 @@ public class Mentoria extends Conteudo{
         this.data = data;
     }
 
+     // Definindo o formato desejado
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy", new Locale("pt", "BR"));
+   
+
     @Override
     public String toString() {
         return "Mentoria{" +
                 "titulo='" + getTitulo() + '\'' +
                 ", descricao='" + getDescricao() + '\'' +
-                ", data=" + data +
+                ", data=" + data.format(formatter) +
                 '}';
     }
 }
