@@ -58,6 +58,37 @@ public class Main {
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
 
+        System.out.println("-------");
+
+        Dev devOsmar = new Dev();
+        devOsmar.setNome("Osmar");
+        devOsmar.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Osmar:" + devOsmar.getConteudosInscritos());
+        devOsmar.progredir();
+        System.out.println("-");
+        System.out.println("XP:" + devOsmar.calcularTotalXp());
+
+        System.out.println("-------");
+
+        Dev devAna = new Dev();
+        devAna.setNome("Ana");
+        devAna.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Ana:" + devAna.getConteudosInscritos());
+        //devAna.progredir();
+        System.out.println("-");
+        System.out.println("XP:" + devAna.calcularTotalXp());
+
+
+      System.out.println(bootcamp.pesquisarPorNome("Camila"));
+      bootcamp.retornaMentoriasPorNome("Joao");
+      bootcamp.retornaMentoriasPorNome("Osmar");
+
+      bootcamp.exibirListaAlunosPorNome();
+      bootcamp.exibirAlunosPorXP();
+      bootcamp.removerAluno("Ana");
+      bootcamp.exibirListaAlunosPorNome();
+
+
     }
 
 }
