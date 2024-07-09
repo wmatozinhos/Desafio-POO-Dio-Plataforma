@@ -2,7 +2,7 @@ package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
 
-public class Mentoria extends Conteudo{
+public class Mentoria extends Conteudo {
 
     private LocalDate data;
 
@@ -11,16 +11,7 @@ public class Mentoria extends Conteudo{
         return XP_PADRAO + 20d;
     }
 
-    public Mentoria() {
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
+    // Getters e setters omitidos para brevidade
 
     @Override
     public String toString() {
@@ -29,5 +20,20 @@ public class Mentoria extends Conteudo{
                 ", descricao='" + getDescricao() + '\'' +
                 ", data=" + data +
                 '}';
+    }
+
+    public void setTitulo(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTitulo'");
+    }
+
+    public void setDescricao(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDescricao'");
+    }
+
+    public void setData(LocalDate now) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setData'");
     }
 }

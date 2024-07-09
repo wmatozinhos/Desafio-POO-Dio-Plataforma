@@ -1,6 +1,6 @@
 package br.com.dio.desafio.dominio;
 
-public class Curso extends Conteudo{
+public class Curso extends Conteudo {
 
     private int cargaHoraria;
 
@@ -9,17 +9,7 @@ public class Curso extends Conteudo{
         return XP_PADRAO * cargaHoraria;
     }
 
-    public Curso() {
-    }
-
-
-    public int getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public void setCargaHoraria(int cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
-    }
+    // Getters e setters omitidos para brevidade
 
     @Override
     public String toString() {
@@ -28,5 +18,20 @@ public class Curso extends Conteudo{
                 ", descricao='" + getDescricao() + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 '}';
+    }
+
+    public void setTitulo(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTitulo'");
+    }
+
+    public void setDescricao(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDescricao'");
+    }
+
+    public void setCargaHoraria(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCargaHoraria'");
     }
 }
