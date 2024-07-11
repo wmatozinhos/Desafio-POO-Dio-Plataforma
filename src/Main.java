@@ -45,7 +45,7 @@ public class Main {
         System.out.println("XP:" + devCamila.calcularTotalXp());
 
         System.out.println("-------");
-
+/* 
         Dev devJoao = new Dev();
         devJoao.setNome("Joao");
         devJoao.inscreverBootcamp(bootcamp);
@@ -57,6 +57,7 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
+*/
 
     }
 

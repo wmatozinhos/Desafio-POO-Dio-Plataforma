@@ -15,8 +15,12 @@ public class Dev {
     public void progredir() {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
         if(conteudo.isPresent()) {
+            
             this.conteudosConcluidos.add(conteudo.get());
+            updateProgressoOfCurse();
             this.conteudosInscritos.remove(conteudo.get());
+            
+           
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
         }
@@ -37,11 +41,34 @@ public class Dev {
                 .sum();*/
     }
 
+    private void updateProgressoOfCurse(){
+        System.out.println("Progredindo...");
+        for (Conteudo iterator : this.conteudosConcluidos) {
+            if( iterator instanceof Curso){
+                while (! iterator.isCargaHorariaConcluida(((Curso)iterator).getCargaHoraria())) {
+                
+                    if (! iterator.isCargaHorariaConcluida(((Curso)iterator).getCargaHoraria())){
+                        iterator.setCargaHorariaConcluida();
+                        System.out.println(((Curso)iterator).getCargaHorariaConcluida());
+                    }               
+                }
+            }else if(iterator instanceof Mentoria){
+                while (! iterator.isCargaHorariaConcluida(((Mentoria)iterator).getCargaHoraria())) {
+                
+                    if (! iterator.isCargaHorariaConcluida(((Mentoria)iterator).getCargaHoraria())){
+                        iterator.setCargaHorariaConcluida();
+                        System.out.println(((Mentoria)iterator).getCargaHorariaConcluida());
+                    }               
+                }
+            }
+            
+        }   
+    }
+
 
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
