@@ -7,28 +7,27 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Bootcamp {
-    private String nome;
-    private String descricao;
-    private final LocalDate dataInicial = LocalDate.now();
-    private final LocalDate dataFinal = dataInicial.plusDays(45);
-    private Set<Dev> devsInscritos = new HashSet<>();
-    private Set<Conteudo> conteudos = new LinkedHashSet<>();
+    private final String nome;
+    private final String descricao;
+    private final LocalDate dataInicial;
+    private final LocalDate dataFinal;
+    private final Set<Dev> devsInscritos = new HashSet<>();
+    private final Set<Conteudo> conteudos = new LinkedHashSet<>();
 
+    // Construtor para inicializar 'nome' e 'descricao'
+    public Bootcamp(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.dataInicial = LocalDate.now();
+        this.dataFinal = dataInicial.plusDays(45);
+    }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public LocalDate getDataInicial() {
@@ -43,16 +42,8 @@ public class Bootcamp {
         return devsInscritos;
     }
 
-    public void setDevsInscritos(Set<Dev> devsInscritos) {
-        this.devsInscritos = devsInscritos;
-    }
-
     public Set<Conteudo> getConteudos() {
         return conteudos;
-    }
-
-    public void setConteudos(Set<Conteudo> conteudos) {
-        this.conteudos = conteudos;
     }
 
     @Override
@@ -60,11 +51,48 @@ public class Bootcamp {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devsInscritos, bootcamp.devsInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
+        return nome.equals(bootcamp.nome) &&
+                descricao.equals(bootcamp.descricao) &&
+                dataInicial.equals(bootcamp.dataInicial) &&
+                dataFinal.equals(bootcamp.dataFinal) &&
+                devsInscritos.equals(bootcamp.devsInscritos) &&
+                conteudos.equals(bootcamp.conteudos);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, conteudos);
+    }
+
+    @Override
+    public String toString() {
+        return "Bootcamp{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", dataInicial=" + dataInicial +
+                ", dataFinal=" + dataFinal +
+                ", devsInscritos=" + devsInscritos +
+                ", conteudos=" + conteudos +
+                '}';
+    }
+
+    // Adiciona um Dev ao Bootcamp
+    public void adicionarDev(Dev dev) {
+        devsInscritos.add(dev);
+    }
+
+    // Remove um Dev do Bootcamp
+    public void removerDev(Dev dev) {
+        devsInscritos.remove(dev);
+    }
+
+    // Adiciona um Conteúdo ao Bootcamp
+    public void adicionarConteudo(Conteudo conteudo) {
+        conteudos.add(conteudo);
+    }
+
+    // Remove um Conteúdo do Bootcamp
+    public void removerConteudo(Conteudo conteudo) {
+        conteudos.remove(conteudo);
     }
 }

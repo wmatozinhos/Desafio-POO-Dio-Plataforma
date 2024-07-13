@@ -2,15 +2,17 @@ package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
 
-public class Mentoria extends Conteudo{
+public class Mentoria extends Conteudo {
 
     private LocalDate data;
 
-    @Override
-    public double calcularXp() {
-        return XP_PADRAO + 20d;
+    // Construtor com parâmetros
+    public Mentoria(String titulo, String descricao, LocalDate data) {
+        super(titulo, descricao);
+        this.data = data;
     }
 
+    // Construtor padrão
     public Mentoria() {
     }
 
@@ -20,6 +22,11 @@ public class Mentoria extends Conteudo{
 
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    @Override
+    public double calcularXp() {
+        return XP_PADRAO + 20d;
     }
 
     @Override
