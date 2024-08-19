@@ -4,8 +4,15 @@ import java.util.*;
 
 public class Dev {
     private String nome;
+    private int tempoDeExperiencia;
+    private String nivelDeExperiencia;
+    private boolean disponibilidadeImediata;
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+
+    // Lista para armazenar os Devs prontos para ser Fostered
+    private static List<Dev> FosterAJuniorDevASAPStart = new ArrayList<>();
+
 
     public void inscreverBootcamp(Bootcamp bootcamp){
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
@@ -46,6 +53,30 @@ public class Dev {
         this.nome = nome;
     }
 
+    public int getTempoDeExperiencia() {
+        return tempoDeExperiencia;
+    }
+
+    public void setTempoDeExperiencia(int tempoDeExperiencia) {
+        this.tempoDeExperiencia = tempoDeExperiencia;
+    }
+
+    public String getNivelDeExperiencia() {
+        return nivelDeExperiencia;
+    }
+
+    public void setNivelDeExperiencia(String nivelDeExperiencia) {
+        this.nivelDeExperiencia = nivelDeExperiencia;
+    }
+
+    public boolean isDisponibilidadeImediata() {
+        return disponibilidadeImediata;
+    }
+
+    public void setDisponibilidadeImediata(boolean disponibilidadeImediata) {
+        this.disponibilidadeImediata = disponibilidadeImediata;
+    }
+
     public Set<Conteudo> getConteudosInscritos() {
         return conteudosInscritos;
     }
@@ -60,6 +91,16 @@ public class Dev {
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
         this.conteudosConcluidos = conteudosConcluidos;
+    }
+
+    // Método para verificar e adicionar Dev à lista FosterAJuniorDevASAPStart
+    public void verificarEAdicionarDev() {
+        if (!conteudosConcluidos.isEmpty() && disponibilidadeImediata) {
+            FosterAJuniorDevASAPStart.add(this);
+            System.out.println("Dev " + nome + " adicionado à lista FosterAJuniorDevASAPStart.");
+        } else {
+            System.out.println("Dev " + nome + " não pode ser adicionado à lista.");
+        }
     }
 
     @Override
