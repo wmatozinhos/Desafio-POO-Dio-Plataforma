@@ -7,14 +7,19 @@ public class Dev {
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
-    public void inscreverBootcamp(Bootcamp bootcamp){
+    // Construtor
+    public Dev(String nome) {
+        this.nome = nome;
+    }
+
+    public void inscreverBootcamp(Bootcamp bootcamp) {
         this.conteudosInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
     }
 
     public void progredir() {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-        if(conteudo.isPresent()) {
+        if (conteudo.isPresent()) {
             this.conteudosConcluidos.add(conteudo.get());
             this.conteudosInscritos.remove(conteudo.get());
         } else {
@@ -23,20 +28,11 @@ public class Dev {
     }
 
     public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while(iterator.hasNext()){
-            double next = iterator.next().calcularXp();
-            soma += next;
-        }
-        return soma;
-
-        /*return this.conteudosConcluidos
+        return this.conteudosConcluidos
                 .stream()
                 .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+                .sum();
     }
-
 
     public String getNome() {
         return nome;
@@ -60,6 +56,28 @@ public class Dev {
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
         this.conteudosConcluidos = conteudosConcluidos;
+    }
+
+    // Método para mostrar o status do Dev
+    public void mostrarStatus() {
+        System.out.println("\n ----------------- "+ nome +" --------------- \n");
+        System.out.println("XP Atual: " + this.calcularTotalXp());
+        System.out.println("\nConteúdos Inscritos:");
+        if (conteudosInscritos.isEmpty()) {
+            System.out.println("- Nenhum conteúdo inscrito.");
+        } else {
+            for (Conteudo conteudo : conteudosInscritos) {
+                System.out.println("- " + conteudo.getTitulo());
+            }
+        }
+        System.out.println("\nConteúdos Concluídos:");
+        if (conteudosConcluidos.isEmpty()) {
+            System.out.println("- Nenhum conteúdo concluído.");
+        } else {
+            for (Conteudo conteudo : conteudosConcluidos) {
+                System.out.println("- " + conteudo.getTitulo());
+            }
+        }
     }
 
     @Override
