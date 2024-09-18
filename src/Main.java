@@ -17,10 +17,16 @@ public class Main {
         curso2.setDescricao("descrição curso js");
         curso2.setCargaHoraria(4);
 
+        Curso curso3 = new Curso();
+        curso3.setTitulo("curso python");
+        curso3.setDescricao("descrição curso python");
+        curso3.setCargaHoraria(5);
+        
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("mentoria de java");
         mentoria.setDescricao("descrição mentoria java");
         mentoria.setData(LocalDate.now());
+        
 
         /*System.out.println(curso1);
         System.out.println(curso2);
@@ -31,6 +37,7 @@ public class Main {
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(curso3);
         bootcamp.getConteudos().add(mentoria);
 
         Dev devCamila = new Dev();
@@ -57,7 +64,26 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
+        
+        System.out.println("-------");
 
+        Dev devLucas = new Dev();
+        devLucas.setNome("Lucas");
+        devLucas.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Lucas:" + devLucas.getConteudosInscritos());
+        devLucas.progredir();
+        devLucas.progredir();
+        devLucas.progredir();
+        devLucas.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos Lucas:" + devLucas.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos Lucas:" + devLucas.getConteudosConcluidos());
+        System.out.println("XP:" + devLucas.calcularTotalXp());
+        
+        System.out.println("-------");
+        
+        bootcamp.getRankingXP();
+        bootcamp.ExibirRanking();
     }
 
 }

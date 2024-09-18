@@ -1,21 +1,41 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Bootcamp {
     private String nome;
     private String descricao;
     private final LocalDate dataInicial = LocalDate.now();
     private final LocalDate dataFinal = dataInicial.plusDays(45);
-    private Set<Dev> devsInscritos = new HashSet<>();
+    private Set<Dev> devsInscritos = new HashSet<Dev>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
+    private List<Dev> rankingXP = new ArrayList<>();
 
-
-    public String getNome() {
+    public List<Dev> getRankingXP() {
+    	rankingXP = devsInscritos.stream()
+    			.sorted(Comparator.comparingDouble(d-> d.getXp()))
+    			.collect(Collectors.toList());
+    	return rankingXP;
+	}
+    
+    public void ExibirRanking() {
+    	rankingXP
+    		.reversed()
+    		.forEach(d-> {
+			System.out.println("Ranking: " + d.getNome().concat(" - Xp: ") + d.getXp());
+		});
+    }
+	public String getNome() {
         return nome;
     }
 
