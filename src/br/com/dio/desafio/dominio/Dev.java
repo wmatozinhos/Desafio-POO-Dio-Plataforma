@@ -23,18 +23,13 @@ public class Dev {
     }
 
     public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while(iterator.hasNext()){
-            double next = iterator.next().calcularXp();
-            soma += next;
-        }
-        return soma;
+        
+       
 
-        /*return this.conteudosConcluidos
+        return this.conteudosConcluidos
                 .stream()
                 .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+                .sum();
     }
 
 
@@ -48,6 +43,12 @@ public class Dev {
 
     public Set<Conteudo> getConteudosInscritos() {
         return conteudosInscritos;
+
+        /*if (conteudosInscritos == (null)) {
+            System.out.println("Você não está matriculado em nenhum conteúdo!");
+            }else {
+                return conteudosInscritos;
+        } */
     }
 
     public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
@@ -56,6 +57,11 @@ public class Dev {
 
     public Set<Conteudo> getConteudosConcluidos() {
         return conteudosConcluidos;
+        /*if (conteudosConcluidos == (null)) {
+            System.out.println("Você não tem nenhum conteúdo concluido!");
+            }else {
+                return conteudosConcluidos;
+        } */
     }
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
