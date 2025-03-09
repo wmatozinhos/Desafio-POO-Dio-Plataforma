@@ -17,6 +17,11 @@ public class Main {
         curso2.setDescricao("descrição curso js");
         curso2.setCargaHoraria(4);
 
+        Curso curso3 = new Curso();
+        curso2.setTitulo("curso py");
+        curso2.setDescricao("descrição curso py");
+        curso2.setCargaHoraria(6);
+
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("mentoria de java");
         mentoria.setDescricao("descrição mentoria java");
@@ -31,6 +36,7 @@ public class Main {
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(curso3);
         bootcamp.getConteudos().add(mentoria);
 
         Dev devCamila = new Dev();
@@ -58,6 +64,50 @@ public class Main {
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
 
+        System.out.println("-------");
+
+        Dev devMaria = new Dev();
+        devMaria.setNome("Maria");
+        devMaria.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Manuel:" + devMaria.getConteudosInscritos());
+        devMaria.progredir();
+        devMaria.progredir();
+        devMaria.progredir();
+        devMaria.progredir();
+        devMaria.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos Manuel:" + devMaria.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos Manuel:" + devMaria.getConteudosConcluidos());
+        System.out.println("XP:" + devMaria.calcularTotalXp());
+
+        System.out.println("-------");
+
+        Dev devManuel = new Dev();
+        devManuel.setNome("Manuel");
+        devManuel.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Manuel:" + devManuel.getConteudosInscritos());
+        devManuel.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos Manuel:" + devManuel.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos Manuel:" + devManuel.getConteudosConcluidos());
+        System.out.println("XP:" + devManuel.calcularTotalXp());
+
+        System.out.println("-------");
+
+        Dev devBruno = new Dev();
+        devBruno.setNome("Bruno");
+        devBruno.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Bruno:" + devBruno.getConteudosInscritos());
+        devBruno.progredir();
+        devBruno.progredir();
+        devBruno.progredir();
+        devBruno.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos Inscritos Bruno:" + devBruno.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos Bruno:" + devBruno.getConteudosConcluidos());
+        System.out.println("XP:" + devBruno.calcularTotalXp());
+
+        bootcamp.exibirRanking();
     }
 
 }
